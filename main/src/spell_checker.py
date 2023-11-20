@@ -3,6 +3,7 @@ from nltk import word_tokenize, sent_tokenize
 from nltk.corpus import stopwords, words
 import nltk
 import pandas as pd
+from  spellchecker import SpellChecker
 
 print(words)
 
@@ -57,3 +58,24 @@ def get_closest_sentence(query_string):
     # return min(closest_terms[tokenized_sentence[0]], key=closest_terms[tokenized_sentence[0]].get), min(closest_terms[tokenized_sentence[1]], key=closest_terms[tokenized_sentence[1]].get))
 
 # print(get_closest_sentence(sentence))
+spell = SpellChecker()
+
+stop_words = set(stopwords.words('english')) 
+
+def remove_stop_words(sentence): 
+    words = sentence.split() 
+    filtered_words = [word for word in words if word not in stop_words] 
+
+    return ' '.join(filtered_words)
+
+def spellcheck(query):
+    query = remove_stop_words(query)
+    query_list = word_tokenize(query)
+    misspelled = spell.unknown(query_list)
+
+    result_string = ""
+    for word in misspelled:
+        result_string += spell.correction(word) + " "
+        print(spell.candidates(word))
+
+    return result_string
