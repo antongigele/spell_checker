@@ -35,9 +35,6 @@ def scrape_single_page2dict(url_page):
 
 if __name__ == "__main__":
     url = "https://www.allacronyms.com/porn/abbreviations/"
-    driver = webdriver.Firefox(options=opts)
 
     with open("/Users/antongigele/Desktop/python/spell_checker/csv_imports/porn_acronyms.json", "w") as outfile: 
         json.dump(scrape_all_pages(url), outfile)
-
-    driver.quit()
