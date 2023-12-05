@@ -1,8 +1,4 @@
 nltk
 pandas
 pyspellchecker
-beautifulsoup4
-requests
-selenium
 wordninja
-typo
