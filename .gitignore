@@ -5,3 +5,5 @@
 venv
 
 /csv_imports/*.txt
+*.txt
+!requirements.txt
